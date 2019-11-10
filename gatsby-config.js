@@ -13,6 +13,7 @@ module.exports = {
     {
       resolve: "gatsby-source-shopify",
       options: {
+        shopName: "stephan-test-store",
         accessToken: process.env.STOREFRONT_ACCESSTOKEN,
         verbose: true,
         paginationSize: 250,
