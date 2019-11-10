@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 module.exports = {
   siteMetadata: {
     title: `Shopify Gatsby`,
@@ -6,6 +10,14 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    {
+      resolve: "gatsby-source-shopify",
+      options: {
+        accessToken: process.env.STOREFRONT_ACCESSTOKEN,
+        verbose: true,
+        paginationSize: 250,
+      }
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
