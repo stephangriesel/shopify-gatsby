@@ -17,7 +17,7 @@ module.exports = {
         accessToken: process.env.STOREFRONT_ACCESSTOKEN,
         verbose: true,
         paginationSize: 250,
-      }
+      },
     },
     {
       resolve: `gatsby-source-filesystem`,
