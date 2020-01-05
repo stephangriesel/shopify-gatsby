@@ -9,6 +9,16 @@ const PRODUCTS_LISTING_QUERY = graphql`
         node {
           id
           title
+          images {
+            originalSrc
+            localFile {
+              childImageSharp {
+                fixed(width: 200) {
+                  ... GatsbyImageSharpFixed
+                }
+              }
+            }
+          }
           publishedAt(formatString: "YYYY")
           description
           descriptionHtml
