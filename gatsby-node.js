@@ -1,10 +1,10 @@
 const path = require('path');
 
 exports.createPages = async ({
-    graphql,
-    actions: { createPage }
+  graphql,
+  actions: { createPage }
 }) => {
-    const pages = await graphql(`
+  const pages = await graphql(`
     {
         allShopifyProduct {
           edges {
@@ -18,14 +18,14 @@ exports.createPages = async ({
       
     `);
 
-    pages.data.allShopifyProduct.edges.forEach(edge => {
-        createPage({
-            path: `/products/${edge.node.handle}`,
-            component: path.resolve('./src/pages/page-2.js'),
-            context: {
-                id: edge.node.id,
-                handle: edge.node.handle
-            },
-        })
+  pages.data.allShopifyProduct.edges.forEach(edge => {
+    createPage({
+      path: `/products/${edge.node.handle}`,
+      component: path.resolve('./src/templates/ProductPageTemplate.js'),
+      context: {
+        id: edge.node.id,
+        handle: edge.node.handle
+      },
     })
+  })
 }
